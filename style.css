@@ -1,0 +1,121 @@
+/* Light Theme */
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --divider: #003580;
+}
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#theme-toggle:hover {
+  background: var(--card-hover);
+}
+
+/* Dark Theme */
+body.dark {
+  --bg: #020817;
+  --card: #0a1628;
+  --card-hover: #132338;
+  --border: #1a2d47;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --divider: #f8fafc;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.contributor-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contributor-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+
+.contributor-card img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.contributor-card h3 {
+  margin: 0.25rem 0;
+}
+
+.contributor-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+.social-btn:hover {
+  background: var(--card-hover);
+  border-color: var(--divider);
+}
+
+.social-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.8;
+}
