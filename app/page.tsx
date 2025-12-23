@@ -9,6 +9,8 @@ import SocialCard from './components/SocialCard';
 import MissionLogs from './components/MissionLogs';
 import TeamSection from './components/TeamSection';
 import CommunityPartners from './components/CommunityPartners';
+import CallForSpeakers from './components/CallForSpeakers';
+import CallForVolunteers from './components/CallForVolunteers';
 import Sponsors from './components/Sponsors';
 
 export default function Home() {
@@ -23,10 +25,12 @@ export default function Home() {
         {/* Main Bento Grid */}
         <div className='flex flex-wrap grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-6 md:h-[850px]'>
           <NextEventCard />
-          <StatsCard />
           <LocationCard />
-          <TechStackCard />
+          <StatsCard />
+          <CallForSpeakers />
+          <CallForVolunteers />
           <SocialCard />
+          <TechStackCard />
         </div>
 
         {/* Secondary Section: Past Logs & Team */}

@@ -133,6 +133,8 @@ community-website/
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── app/                     # Next.js App Router directory
 │   ├── components/          # Reusable React components
+│   │   ├── CallForSpeakers.tsx  # Call for speakers section
+│   │   ├── CallForVolunteers.tsx  # Call for volunteers section
 │   │   ├── CommunityPartners.tsx  # Partner organizations section
 │   │   ├── Header.tsx             # Site header with theme toggle
 │   │   ├── HeroSection.tsx        # Main hero banner
