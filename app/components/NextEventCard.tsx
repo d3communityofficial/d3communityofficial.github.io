@@ -33,7 +33,7 @@ export default function NextEventCard() {
               <div className="p-3 bg-dark-card border border-dark-border rounded-xl">
                 <CalendarClock className="w-6 h-6 text-dark-secondary" />
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-dark-muted border border-dark-border px-2 py-1 rounded bg-dark-card">
+              <span className="text-sm font-bold uppercase tracking-widest text-dark-muted border border-dark-border px-2 py-1 rounded bg-dark-card">
                 Incoming
               </span>
             </div>
@@ -41,7 +41,7 @@ export default function NextEventCard() {
             <div className="my-8">
               <div className="text-dark-secondary font-mono text-sm mb-2">&gt;&gt; {event.formattedDate}</div>
               <h3 className="text-2xl font-bold leading-tight mb-4 text-dark-text">{event.title}</h3>
-              <p className="text-dark-muted text-sm leading-relaxed border-l-2 border-dark-primary pl-3 mb-4">
+              <p className="text-dark-muted text-lg leading-relaxed border-l-2 border-dark-primary pl-3 mb-4">
                 {event.description}
               </p>
               {event.venue && (

@@ -104,7 +104,7 @@ export default function PastEventCard() {
           <div className="p-3 bg-dark-card border border-dark-border rounded-xl">
             <CalendarCheck className="w-6 h-6 text-dark-secondary" aria-hidden="true" />
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-dark-muted border border-dark-border px-2 py-1 rounded bg-dark-card">
+          <span className="text-sm font-bold uppercase tracking-widest text-dark-muted border border-dark-border px-2 py-1 rounded bg-dark-card">
             Past Events
           </span>
         </div>
@@ -138,11 +138,11 @@ export default function PastEventCard() {
                 <div className="mb-4">
                   <div className="text-dark-secondary font-mono text-xs mb-2">&gt;&gt; {event.formattedDate}</div>
                   <h3 className="text-lg font-bold leading-tight mb-2 text-dark-text">{event.title}</h3>
-                  <p className="text-dark-muted text-sm leading-relaxed border-l-2 border-dark-primary pl-3 mb-3">
+                  <p className="text-dark-muted text-lg leading-relaxed border-l-2 border-dark-primary pl-3 mb-3">
                     {event.description}
                   </p>
                   {event.venue && (
-                    <div className="flex items-center gap-2 text-xs text-dark-muted">
+                    <div className="flex items-center gap-2 text-sm text-dark-muted">
                       <MapPin className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
                       <span>{event.venue}</span>
                     </div>
