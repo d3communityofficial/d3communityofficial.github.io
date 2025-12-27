@@ -7,8 +7,17 @@ import * as THREE from 'three';
 import { getAssetPath } from '../../utils/paths';
 
 // Component to handle the robot model and rotation
-function RobotModel({ cursorPosition, isMobile }: { cursorPosition: number; isMobile: boolean }) {
-  const modelPath = useMemo(() => getAssetPath('/D3-robot-3d-model.glb'), []);
+function RobotModel({
+  cursorPosition,
+  isMobile,
+}: {
+  cursorPosition: number;
+  isMobile: boolean;
+}) {
+  const modelPath = useMemo(
+    () => getAssetPath('/3d-model/D3-robot-3d-model.glb'),
+    []
+  );
   const { scene } = useGLTF(modelPath);
   const robotRef = useRef<THREE.Group>(null);
   const targetRotation = useRef(0);
@@ -37,7 +46,11 @@ function RobotModel({ cursorPosition, isMobile }: { cursorPosition: number; isMo
     targetRotation.current = -Math.PI / 2 + rotationOffset;
 
     // Smoothly interpolate to target rotation
-    robotRef.current.rotation.y = THREE.MathUtils.lerp(robotRef.current.rotation.y, targetRotation.current, 0.1);
+    robotRef.current.rotation.y = THREE.MathUtils.lerp(
+      robotRef.current.rotation.y,
+      targetRotation.current,
+      0.1
+    );
   });
 
   // Adjust scale and position based on mobile/desktop
@@ -63,7 +76,9 @@ export default function Robot3D() {
 
   useEffect(() => {
     // Find the hero section element
-    heroSectionRef.current = document.querySelector('[data-hero-section]') as HTMLElement;
+    heroSectionRef.current = document.querySelector(
+      '[data-hero-section]'
+    ) as HTMLElement;
 
     // Check if mobile on mount and resize
     const checkMobile = () => {
@@ -115,7 +130,7 @@ export default function Robot3D() {
   }, []);
 
   return (
-    <div className='absolute top-0 right-0 w-48 h-48 md:inset-0 md:w-full md:h-full pointer-events-none z-[1] overflow-hidden'>
+    <div className="absolute top-0 right-0 w-48 h-48 md:inset-0 md:w-full md:h-full pointer-events-none z-[1] overflow-hidden">
       <Canvas
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
@@ -124,8 +139,8 @@ export default function Robot3D() {
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={1.5} />
         <directionalLight position={[-5, 3, -5]} intensity={0.7} />
-        <pointLight position={[0, 4, 2]} intensity={1} color='#004aad' />
-        <pointLight position={[-3, 2, 3]} intensity={0.5} color='#004aad' />
+        <pointLight position={[0, 4, 2]} intensity={1} color="#004aad" />
+        <pointLight position={[-3, 2, 3]} intensity={0.5} color="#004aad" />
         <RobotModel cursorPosition={cursorPosition} isMobile={isMobile} />
       </Canvas>
     </div>
@@ -133,6 +148,8 @@ export default function Robot3D() {
 }
 
 // Preload the model - detect basePath at module load time
-const preloadPath = typeof window !== 'undefined' ? getAssetPath('/D3-robot-3d-model.glb') : '/D3-robot-3d-model.glb';
+const preloadPath =
+  typeof window !== 'undefined'
+    ? getAssetPath('/D3-robot-3d-model.glb')
+    : '/D3-robot-3d-model.glb';
 useGLTF.preload(preloadPath);
-
