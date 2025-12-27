@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import Image from "next/image"
 import contributors from "@/public/contributors.json"
@@ -6,16 +6,16 @@ import { Github, Linkedin } from "lucide-react"
 import { getAssetPath } from "@/app/utils/paths"
 
 type Contributor = {
-  id: string
-  name: string
-  role: string
-  avatar: string
-  github?: string
-  linkedin?: string
-}
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  github?: string;
+  linkedin?: string;
+};
 
 function ContributorCard({ contributor }: { contributor: Contributor }) {
-  const { name, role, avatar, github, linkedin } = contributor
+  const { name, role, avatar, github, linkedin } = contributor;
 
   return (
     <div
@@ -57,7 +57,7 @@ function ContributorCard({ contributor }: { contributor: Contributor }) {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default function ContributorsSection() {
