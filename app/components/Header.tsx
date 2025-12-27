@@ -28,44 +28,56 @@ export default function Header() {
         </button>
 
         <a
-          href='#'
+          href='https://github.com/d3communityofficial'
+          target='_blank'
+          rel='noopener noreferrer'
           className='w-10 h-10 hidden rounded-full bg-dark-card border border-dark-border sm:flex items-center justify-center text-dark-muted hover:text-dark-text hover:border-dark-primary transition-all'
           aria-label='GitHub'
         >
           <Github className='w-5 h-5' />
         </a>
         <a
-          href='#'
+          href='https://d3community.in/x'
+          target='_blank'
+          rel='noopener noreferrer'
           className='w-10 h-10 hidden rounded-full bg-dark-card border border-dark-border sm:flex items-center justify-center text-dark-muted hover:text-dark-text hover:border-dark-primary transition-all'
-          aria-label='Twitter'
+          aria-label='X (Twitter)'
         >
           <Twitter className='w-5 h-5' />
         </a>
         <a
-          href='#'
+          href='https://d3community.in/linkedin'
+          target='_blank'
+          rel='noopener noreferrer'
           className='w-10 h-10 hidden rounded-full bg-dark-card border border-dark-border sm:flex items-center justify-center text-dark-muted hover:text-dark-text hover:border-dark-primary transition-all'
           aria-label='LinkedIn'
         >
           <Linkedin className='w-5 h-5' />
         </a>
         <a
-          href='#'
+          href='https://d3community.in/youtube'
+          target='_blank'
+          rel='noopener noreferrer'
           className='w-10 h-10 hidden rounded-full bg-dark-card border border-dark-border sm:flex items-center justify-center text-dark-muted hover:text-dark-text hover:border-dark-primary transition-all'
           aria-label='YouTube'
         >
           <Youtube className='w-5 h-5' />
         </a>
         <a
-          href='#'
+          href='https://d3community.in/instagram'
+          target='_blank'
+          rel='noopener noreferrer'
           className='w-10 h-10 hidden rounded-full bg-dark-card border border-dark-border sm:flex items-center justify-center text-dark-muted hover:text-dark-text hover:border-dark-primary transition-all'
           aria-label='Instagram'
         >
           <Instagram className='w-5 h-5' />
         </a>
         <a
-          href='#'
+          href='https://d3community.in/luma'
+          target='_blank'
+          rel='noopener noreferrer'
           className='w-10 h-10 hidden rounded-full bg-dark-card border border-dark-border sm:flex items-center justify-center text-dark-muted hover:text-dark-text hover:border-dark-primary transition-all'
-          aria-label='Meetup Registration'
+          aria-label='Luma Events'
         >
           <CalendarDays className='w-5 h-5' />
         </a>

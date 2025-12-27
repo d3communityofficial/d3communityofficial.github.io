@@ -9,6 +9,7 @@ import CommunityPartners from './components/CommunityPartners';
 import CallForSpeakers from './components/CallForSpeakers';
 import CallForVolunteers from './components/CallForVolunteers';
 import Sponsors from './components/Sponsors';
+import ContactUs from './components/ContactUs';
 import ContributorsSection from './components/ContributorsSection';
 
 export default function Home() {
@@ -56,9 +57,15 @@ export default function Home() {
         <section id="sponsors">
           <Sponsors />
         </section>
+
         {/* Contributors Section */}
         <section id="contributors">
           <ContributorsSection />
+        </section>
+
+        {/* Contact Us Section */}
+        <section id="contact">
+          <ContactUs />
         </section>
       </div>
     </>
