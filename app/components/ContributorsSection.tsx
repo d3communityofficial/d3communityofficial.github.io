@@ -1,7 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import contributors from "@/public/contributors.json"
 import { Github, Linkedin } from "lucide-react"
+import { getAssetPath } from "@/app/utils/paths"
 
 type Contributor = {
   id: string
@@ -10,22 +12,6 @@ type Contributor = {
   avatar: string
   github?: string
   linkedin?: string
-}
-
-export default function ContributorsSection() {
-  return (
-    <section className="container py-16">
-       <h2 className="mb-8 text-3xl font-bold text-dark-text">
-        Contributors
-      </h2>
-
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {contributors.map((c: Contributor) => (
-          <ContributorCard key={c.id} contributor={c} />
-        ))}
-      </div>
-    </section>
-  )
 }
 
 function ContributorCard({ contributor }: { contributor: Contributor }) {
@@ -44,69 +30,48 @@ function ContributorCard({ contributor }: { contributor: Contributor }) {
         hover:border-dark-primary
       "
     >
-      <img
-        src={avatar}
+      <Image
+        src={getAssetPath(avatar)}
         alt={name}
+        width={80}
+        height={80}
         className="h-20 w-20 rounded-full object-cover"
       />
 
-      <h3 className="mt-4 font-semibold transition-colors group-hover:text-dark-primary">
+      <h3 className="mt-4 font-semibold group-hover:text-dark-primary">
         {name}
       </h3>
 
-      <p className="text-sm text-dark-muted">
-        {role}
-      </p>
+      <p className="text-sm text-dark-muted">{role}</p>
 
       <div className="mt-4 flex gap-3">
         {github && (
-          <SocialIcon
-            href={github}
-            label="GitHub"
-            icon={<Github size={16} />}
-          />
+          <a href={github} target="_blank" rel="noreferrer">
+            <Github size={16} />
+          </a>
         )}
         {linkedin && (
-          <SocialIcon
-            href={linkedin}
-            label="LinkedIn"
-            icon={<Linkedin size={16} />}
-          />
+          <a href={linkedin} target="_blank" rel="noreferrer">
+            <Linkedin size={16} />
+          </a>
         )}
       </div>
     </div>
   )
 }
 
-function SocialIcon({
-  href,
-  icon,
-  label,
-}: {
-  href: string
-  icon: React.ReactNode
-  label: string
-}) {
+export default function ContributorsSection() {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={label}
-      className="
-        hidden sm:flex
-        w-10 h-10
-        items-center justify-center
-        rounded-full
-        bg-dark-card
-        border border-dark-border
-        text-dark-muted
-        transition-all
-        hover:text-dark-text
-        hover:border-dark-primary
-      "
-    >
-      {icon}
-    </a>
+    <section className="container py-16">
+      <h2 className="mb-8 text-3xl font-bold text-dark-text">
+        Contributors
+      </h2>
+
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {contributors.map((c: Contributor) => (
+          <ContributorCard key={c.id} contributor={c} />
+        ))}
+      </div>
+    </section>
   )
 }
