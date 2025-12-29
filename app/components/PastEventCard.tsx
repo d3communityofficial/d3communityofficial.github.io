@@ -2,19 +2,8 @@
 
 import { CalendarCheck, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import eventsData from "../data/events.json";
+import eventsData from "../data/events";
 import { useResponsiveCardsPerView, useCarouselAutoRotate, useCarouselPause } from "../hooks/useCarousel";
-
-interface PastEvent {
-  id: string;
-  date: string;
-  formattedDate: string;
-  title: string;
-  description: string;
-  status: string;
-  link: string;
-  venue: string;
-}
 
 export default function PastEventCard() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,7 +11,7 @@ export default function PastEventCard() {
   
   // Memoize pastEvents to prevent array recreation on every render
   const pastEvents = useMemo(() => {
-    return (eventsData.pastEvents || []) as PastEvent[];
+    return eventsData.pastEvents || [];
   }, []);
   
   const { isPaused, pause, resume, pauseWithResume } = useCarouselPause();
