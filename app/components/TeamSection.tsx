@@ -2,20 +2,20 @@
 import Image from 'next/image';
 import { Cpu } from 'lucide-react';
 import CardSkeleton from './shared/CardSkeleton';
-import coreTeam, { CoreTeamMember  } from '@/app/data/coreTeam';
+import coreTeam, { CoreTeamMember } from '@/app/data/coreTeam';
 import { getAssetPath } from '@/app/utils/paths';
 
 export default function TeamSection() {
   const founder = coreTeam.find(
-    (member: CoreTeamMember ) => member.id === 'd3-001'
+    (member: CoreTeamMember) => member.id === 'd3-001'
   );
 
   const members = coreTeam.filter(
-    (member: CoreTeamMember ) => member.id !== 'd3-001'
+    (member: CoreTeamMember) => member.id !== 'd3-001'
   );
 
   return (
-    <section className="py-16 space-y-8">
+    <div className="space-y-8">
       {/* Section heading */}
       <h2 className="text-3xl font-bold flex items-center gap-2 text-dark-text">
         <Cpu className="w-7 h-7 text-dark-secondary" />
@@ -40,9 +40,7 @@ export default function TeamSection() {
                 {founder.name}
               </h3>
 
-              <p className="text-sm text-dark-muted">
-                {founder.role}
-              </p>
+              <p className="text-sm text-dark-muted">{founder.role}</p>
             </div>
           </CardSkeleton>
         </div>
@@ -66,13 +64,11 @@ export default function TeamSection() {
                 {member.name}
               </h3>
 
-              <p className="text-sm text-dark-muted">
-                {member.role}
-              </p>
+              <p className="text-sm text-dark-muted">{member.role}</p>
             </div>
           </CardSkeleton>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

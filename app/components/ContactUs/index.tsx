@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { MessageSquare } from "lucide-react";
+import { MessageSquare } from 'lucide-react';
 
 export default function ContactUs() {
   return (
@@ -33,15 +33,17 @@ export default function ContactUs() {
       {/* Additional Info */}
       <div className="bg-dark-card rounded-3xl p-6 border border-dark-border text-center">
         <p className="text-dark-muted text-sm">
-          <span className="font-semibold text-dark-text">Looking for partnerships or sponsorships?</span>
-          {" "}Email us at{" "}
-          <a 
-            href="mailto:d3communityofficial@gmail.com" 
+          <span className="font-semibold text-dark-text">
+            Looking for partnerships or sponsorships?
+          </span>{' '}
+          Email us at{' '}
+          <a
+            href="mailto:d3communityofficial@gmail.com"
             className="text-dark-primary hover:underline font-medium"
           >
             d3communityofficial@gmail.com
-          </a>
-          {" "}with the subject line "Partnership Inquiry"
+          </a>{' '}
+          with the subject line "Partnership Inquiry"
         </p>
       </div>
     </div>

@@ -6,10 +6,10 @@
   "homepage": "https://d3communityofficial.github.io",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/d3communityofficial/d3communityofficial.git"
+    "url": "git+https://github.com/d3communityofficial/d3communityofficial.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/d3communityofficial/d3communityofficial/issues"
+    "url": "https://github.com/d3communityofficial/d3communityofficial.github.io/issues"
   },
   "author": "Digital Dreamers Den",
   "scripts": {
