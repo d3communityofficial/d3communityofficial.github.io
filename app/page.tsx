@@ -27,16 +27,16 @@ export default function Home() {
         <section id="home">
           <HeroSection />
         </section>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <section
-            id="about"
-            className="col-span-full md:col-span-2 w-full flex flex-col h-full"
-          >
+        <section
+          id="about-socials"
+          className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-16"
+        >
+          <div className="col-span-full md:col-span-2 w-full flex flex-col h-full">
             <About />
-          </section>
+          </div>
 
           {/* Social Links Section - Takes Right 50% */}
-          <section className="col-span-full md:col-span-2 w-full flex flex-col h-full">
+          <div className="col-span-full md:col-span-2 w-full flex flex-col h-full">
             <div className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
                 <MessageSquare className="w-6 h-6 text-dark-secondary" />
@@ -46,16 +46,19 @@ export default function Home() {
                 <SocialLinks />
               </div>
             </div>
-          </section>
-        </div>
-
+          </div>
+        </section>
+        {/*Core  Team */}
+        <section id="team" className="pt-16">
+          <TeamSection />
+        </section>
         {/* Main Bento Grid */}
         <section
           id="events"
-          className="flex flex-wrap grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-6"
+          className="flex flex-wrap grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-8 pt-16"
         >
           <NextEventCard />
-          <PastEventCard/>
+          <PastEventCard />
           <div className="flex flex-wrap gap-4 md:gap-6">
             {/* Call for Speakers Section */}
             <CallForSpeakers />
@@ -63,29 +66,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Secondary Section: Past Logs & Team */}
-        <section id="team" className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section id="mission-logs" className="pt-16">
           <MissionLogs />
-          <TeamSection />
         </section>
 
         {/* Community Partners Section */}
-        <section id="partners">
+        <section id="partners" className="pt-16">
           <CommunityPartners />
         </section>
 
         {/* Sponsors Section */}
-        <section id="sponsors">
+        <section id="sponsors" className="pt-16">
           <Sponsors />
         </section>
 
         {/* Contributors Section */}
-        <section id="contributors">
+        <section id="contributors" className="pt-16">
           <ContributorsSection />
         </section>
 
         {/* Contact Us Section */}
-        <section id="contact">
+        <section id="contact" className="pt-16">
           <ContactUs />
         </section>
       </div>

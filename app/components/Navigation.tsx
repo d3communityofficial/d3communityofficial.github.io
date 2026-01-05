@@ -137,7 +137,7 @@ export default function Navigation() {
           onClick={() => setIsMenuOpen(false)}
         >
           <div
-            className="nav-glass border border-dark-border rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.8)] absolute bottom-20 left-1/2 -translate-x-1/2 w-auto min-w-[200px] max-w-[90vw] p-4 h-[60vh] flex flex-col overflow-hidden"
+            className="nav-glass border border-dark-border rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.8)] absolute bottom-20 left-1/2 -translate-x-1/2 w-auto min-w-[200px] max-w-[90vw] p-4 h-[auto] flex flex-col overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <nav className="flex flex-col gap-3 flex-1 justify-between">

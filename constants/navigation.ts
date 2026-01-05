@@ -11,11 +11,14 @@
  */
 export const NAVIGATION_SECTIONS = [
   'home',
-  'about',
-  'events',
+  'about-socials',
   'team',
+  'events',
+  'mission-logs',
   'partners',
   'sponsors',
+  'contributors',
+  'contact',
 ] as const;
 
 /**
@@ -30,11 +33,14 @@ export interface NavigationItem {
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { id: 'home', label: 'Home', href: '#' },
-  { id: 'about', label: 'About', href: '#about' },
-  { id: 'events', label: 'Events', href: '#events' },
+  { id: 'about-socials', label: 'About', href: '#about-socials' },
   { id: 'team', label: 'Team', href: '#team' },
+  { id: 'events', label: 'Events', href: '#events' },
+  { id: 'mission-logs', label: 'Mission', href: '#mission-logs' },
   { id: 'partners', label: 'Partners', href: '#partners' },
   { id: 'sponsors', label: 'Sponsors', href: '#sponsors' },
+  { id: 'contributors', label: 'Contributors', href: '#contributors' },
+  { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
 /**

@@ -1,103 +1,73 @@
-import { Cpu } from 'lucide-react';
+'use client';
 import Image from 'next/image';
+import { Cpu } from 'lucide-react';
+import CardSkeleton from './shared/CardSkeleton';
+import coreTeam, { CoreTeamMember } from '@/app/data/coreTeam';
+import { getAssetPath } from '@/app/utils/paths';
 
 export default function TeamSection() {
-  const teamMembers = [
-    {
-      name: 'Alex Chen',
-      role: 'FOUNDER',
-      seed: 'Alex',
-      bgColor: 'b6e3f4',
-      roleColor: 'text-dark-primary',
-      borderHover: 'group-hover:border-dark-primary',
-    },
-    {
-      name: 'Maya Patel',
-      role: 'CORE_TEAM',
-      seed: 'Maya',
-      bgColor: 'ffdfbf',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-    {
-      name: 'Jordan Lee',
-      role: 'CORE_TEAM',
-      seed: 'Jordan',
-      bgColor: 'c0aede',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-    {
-      name: 'Taylor Kim',
-      role: 'CORE_TEAM',
-      seed: 'Taylor',
-      bgColor: 'd4f4dd',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-    {
-      name: 'Sam Rodriguez',
-      role: 'CORE_TEAM',
-      seed: 'Sam',
-      bgColor: 'ffd5e5',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-    {
-      name: 'Casey Wong',
-      role: 'CORE_TEAM',
-      seed: 'Casey',
-      bgColor: 'fff5ba',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-    {
-      name: 'Riley Brooks',
-      role: 'CORE_TEAM',
-      seed: 'Riley',
-      bgColor: 'e5d4f4',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-    {
-      name: 'Morgan Davis',
-      role: 'CORE_TEAM',
-      seed: 'Morgan',
-      bgColor: 'd4e5f4',
-      roleColor: 'text-dark-muted',
-      borderHover: 'group-hover:border-dark-secondary',
-    },
-  ];
+  const founder = coreTeam.find(
+    (member: CoreTeamMember) => member.id === 'd3-001'
+  );
+
+  const members = coreTeam.filter(
+    (member: CoreTeamMember) => member.id !== 'd3-001'
+  );
 
   return (
-    <div className='md:col-span-3 lg:col-span-1'>
-      <h2 className='text-2xl font-bold flex items-center gap-2 mb-6'>
-        <Cpu className='w-6 h-6 text-dark-primary' />
-        Core Units
+    <div className="space-y-8">
+      {/* Section heading */}
+      <h2 className="text-3xl font-bold flex items-center gap-2 text-dark-text">
+        <Cpu className="w-7 h-7 text-dark-secondary" />
+        Core Team
       </h2>
 
-      <div className='bg-dark-card border border-dark-border rounded-3xl p-6'>
-        <div className='space-y-6'>
-          {teamMembers.map((member) => (
-            <div key={member.name} className='flex items-center gap-4 group'>
-              <div
-                className={`w-12 h-12 rounded-xl bg-gray-800 overflow-hidden border border-dark-border ${member.borderHover} transition-colors`}
-              >
+      {/* Founder — first row */}
+      {founder && (
+        <div className="flex flex-wrap gap-4 md:gap-7">
+          <CardSkeleton url={founder.linkedin}>
+            <div className="h-full flex flex-col items-center justify-center text-center group">
+              <div className="relative w-20 h-20 mb-4">
                 <Image
-                  src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${member.seed}&backgroundColor=${member.bgColor}`}
-                  alt={member.name}
-                  width={48}
-                  height={48}
-                  className='w-full h-full object-cover'
+                  src={getAssetPath(founder.avatar)}
+                  alt={founder.name}
+                  fill
+                  className="rounded-full object-cover"
                 />
               </div>
-              <div>
-                <h4 className='font-bold text-sm text-white'>{member.name}</h4>
-                <span className={`text-xs ${member.roleColor} font-mono`}>{member.role}</span>
-              </div>
+
+              <h3 className="font-semibold text-dark-text group-hover:text-dark-primary transition-colors">
+                {founder.name}
+              </h3>
+
+              <p className="text-sm text-dark-muted">{founder.role}</p>
             </div>
-          ))}
+          </CardSkeleton>
         </div>
+      )}
+
+      {/* Remaining core members — next row(s) */}
+      <div className="flex flex-wrap gap-4 md:gap-7">
+        {members.map((member: CoreTeamMember) => (
+          <CardSkeleton key={member.id} url={member.linkedin}>
+            <div className="h-full flex flex-col items-center justify-center text-center group">
+              <div className="relative w-20 h-20 mb-4">
+                <Image
+                  src={getAssetPath(member.avatar)}
+                  alt={member.name}
+                  fill
+                  className="rounded-full object-cover"
+                />
+              </div>
+
+              <h3 className="font-semibold text-dark-text group-hover:text-dark-primary transition-colors">
+                {member.name}
+              </h3>
+
+              <p className="text-sm text-dark-muted">{member.role}</p>
+            </div>
+          </CardSkeleton>
+        ))}
       </div>
     </div>
   );

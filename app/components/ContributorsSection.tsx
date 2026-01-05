@@ -8,7 +8,7 @@ import { getAssetPath } from '@/app/utils/paths';
 
 export default function ContributorsSection() {
   return (
-    <section className="py-16 space-y-8">
+    <div className="space-y-8">
       {/* Section heading */}
       <h2 className="text-3xl font-bold flex items-center gap-2 text-dark-text">
         <UserPlus className="w-7 h-7 text-dark-secondary" />
@@ -18,10 +18,7 @@ export default function ContributorsSection() {
       {/* Cards */}
       <div className="flex flex-wrap gap-4 md:gap-7">
         {contributors.map((contributor: Contributor) => (
-          <CardSkeleton
-            key={contributor.id}
-            url={contributor.linkedin}
-          >
+          <CardSkeleton key={contributor.id} url={contributor.linkedin}>
             {/* Card content */}
             <div className="h-full flex flex-col items-center justify-center text-center group">
               {/* Avatar */}
@@ -40,13 +37,11 @@ export default function ContributorsSection() {
               </h3>
 
               {/* Role */}
-              <p className="text-sm text-dark-muted">
-                {contributor.role}
-              </p>
+              <p className="text-sm text-dark-muted">{contributor.role}</p>
             </div>
           </CardSkeleton>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
