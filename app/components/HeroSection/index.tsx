@@ -69,16 +69,16 @@ export default function HeroSection() {
           <HeroIcon variant="mobile" />
           <a
             href="#events"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all hover:shadow-lg hover:scale-105"
+            className="inline-flex items-center gap-2 px-4 md:px-6 py-3 text-sm md:text-base rounded-xl font-bold transition-all hover:shadow-lg hover:scale-105"
             style={{ background: 'var(--gradient-primary)', color: 'white' }}
           >
-            Explore Events <ArrowRight className="w-4 h-4" />
+            Explore Events <ArrowRight className="w-6 h-6 md:w-4 md:h-4" />
           </a>
           <a
             href={EXTERNAL_LINKS.WHATS_APP}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-dark-card border border-dark-border text-dark-text rounded-xl font-bold hover:border-dark-primary transition-colors"
+            className="inline-flex items-center gap-3 md:gap-2 px-4 md:px-6 py-3 text-sm md:text-base bg-dark-card border border-dark-border text-dark-text rounded-xl font-bold hover:border-dark-primary transition-colors"
           >
             <Image
               src={getAssetPath('/hero/whats-app.png')}
