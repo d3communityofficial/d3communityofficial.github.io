@@ -12,6 +12,7 @@ import CallForVolunteers from './components/CallForVolunteers';
 import Sponsors from './components/Sponsors';
 import ContactUs from './components/ContactUs';
 import ContributorsSection from './components/ContributorsSection';
+import { CalendarClock } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -39,18 +40,28 @@ export default function Home() {
           </section>
         </div>
 
-        {/* Main Bento Grid */}
-        <section
-          id="events"
-          className="flex flex-wrap grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-6"
-        >
-          <NextEventCard />
-          <PastEventCard/>
-          <div className="flex flex-wrap gap-4 md:gap-6">
-            {/* Call for Speakers Section */}
-            <CallForSpeakers />
-            <CallForVolunteers />
+        {/* Next Event and Call for Speakers - 50/50 Layout */}
+        <section id="events">
+          <div className="flex items-center gap-3 mb-6">
+            <CalendarClock className="w-6 h-6 text-dark-secondary" />
+            <h2 className="text-2xl md:text-3xl font-bold font-sans text-[var(--color-text)]">
+              Events
+            </h2>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <NextEventCard />
+            <CallForSpeakers />
+          </div>
+        </section>
+
+        {/* Past Events */}
+        <section>
+          <PastEventCard/>
+        </section>
+
+        {/* Call for Volunteers */}
+        <section>
+          <CallForVolunteers />
         </section>
 
         {/* Secondary Section: Past Logs & Team */}
