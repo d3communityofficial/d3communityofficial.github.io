@@ -27,7 +27,7 @@ export default function TeamSection() {
         <div className="flex flex-wrap gap-4 md:gap-7">
           <CardSkeleton url={founder.linkedin}>
             <div className="h-full flex flex-col items-center justify-center text-center group">
-              <div className="relative w-20 h-20 mb-4">
+              <div className="relative w-16 sm:w-18 md:w-20 aspect-square mb-4 flex-shrink-0">
                 <Image
                   src={getAssetPath(founder.avatar)}
                   alt={founder.name}
@@ -51,7 +51,7 @@ export default function TeamSection() {
         {members.map((member: CoreTeamMember) => (
           <CardSkeleton key={member.id} url={member.linkedin}>
             <div className="h-full flex flex-col items-center justify-center text-center group">
-              <div className="relative w-20 h-20 mb-4">
+             <div className="relative w-16 sm:w-18 md:w-20 aspect-square mb-4 flex-shrink-0">
                 <Image
                   src={getAssetPath(member.avatar)}
                   alt={member.name}

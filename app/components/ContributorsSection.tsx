@@ -22,7 +22,7 @@ export default function ContributorsSection() {
             {/* Card content */}
             <div className="h-full flex flex-col items-center justify-center text-center group">
               {/* Avatar */}
-              <div className="relative w-20 h-20 mb-4">
+              <div className="relative w-16 sm:w-18 md:w-20 aspect-square mb-4 flex-shrink-0">
                 <Image
                   src={getAssetPath(contributor.avatar)}
                   alt={contributor.name}
