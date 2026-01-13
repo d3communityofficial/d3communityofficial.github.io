@@ -1,89 +1,45 @@
 "use client";
 
-import { CalendarClock, MapPin } from "lucide-react";
-import { useState, useMemo } from "react";
+import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 import eventsData from "../data/events";
 
 export default function NextEventCard() {
-  const [showRSVP, setShowRSVP] = useState<string | null>(null);
+  // Get only the first upcoming event
+  const event = eventsData.upcomingEvents?.[0] || null;
 
-  // Memoize the first 2 upcoming events to prevent array recreation on every render
-  const upcomingEvents = useMemo(() => {
-    return (eventsData.upcomingEvents || []).slice(0, 2);
-  }, []);
-
-  const handleRSVP = (event: typeof upcomingEvents[0]) => {
-    if (event.rsvpUrl) {
-      window.open(event.rsvpUrl, '_blank', 'noopener,noreferrer');
-    } else {
-      setShowRSVP(event.id);
+  const handleRSVP = () => {
+    if (event && event.rsvpUrl) {
+      window.open(event.rsvpUrl, "_blank", "noopener,noreferrer");
     }
   };
 
-  if (upcomingEvents.length === 0) {
-    return null;
-  }
-
   return (
-    <>
-      {upcomingEvents.map((event) => (
-        <div key={event.id} className="md:col-span-2 rounded-bento p-8 border border-dark-border bento-card flex flex-col relative overflow-hidden group bg-dark-card">
-          <div className="relative z-10 h-full flex flex-col">
-            <div className="flex justify-between items-start mb-auto">
-              <div className="p-3 bg-dark-card border border-dark-border rounded-xl">
-                <CalendarClock className="w-6 h-6 text-dark-secondary" />
-              </div>
-              <span className="text-sm font-bold uppercase tracking-widest text-dark-muted border border-dark-border px-2 py-1 rounded bg-dark-card">
-                Incoming
-              </span>
-            </div>
-
-            <div className="my-8">
-              <div className="text-dark-secondary font-mono text-sm mb-2">&gt;&gt; {event.formattedDate}</div>
-              <h3 className="text-2xl font-bold leading-tight mb-4 text-dark-text">{event.title}</h3>
-              <p className="text-dark-muted text-lg leading-relaxed border-l-2 border-dark-primary pl-3 mb-4">
-                {event.description}
-              </p>
-              {event.venue && (
-                <div className="flex items-center gap-2 text-sm text-dark-muted">
-                  <MapPin className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-                  <span>{event.venue}</span>
-                </div>
-              )}
-            </div>
-
-            <button 
-              onClick={() => handleRSVP(event)}
-              className="w-full py-3 font-bold rounded-xl mt-auto transition-all hover:shadow-lg hover:scale-105 cursor-pointer bg-gradient-accent" 
-              style={{ color: '#000' }}
-              aria-label={`RSVP for ${event.title} event`}
-            >
-              RSVP Now
-            </button>
-          </div>
-        </div>
-      ))}
-      
-      {/* Empty slot if only 1 event - use stable key */}
-      {upcomingEvents.length === 1 && (
-        <div key="empty-slot" className="md:col-span-2" aria-hidden="true"></div>
-      )}
-
-      {showRSVP && (
-        <div className="fixed inset-0 bg-dark-bg/50 flex items-center justify-center z-50 p-4" onClick={() => setShowRSVP(null)}>
-          <div className="bg-dark-card border border-dark-border rounded-2xl p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-xl font-bold mb-4 text-dark-text">RSVP Coming Soon</h3>
-            <p className="text-dark-muted mb-4">RSVP functionality will be available soon. For now, please join our community to stay updated!</p>
-            <button
-              onClick={() => setShowRSVP(null)}
-              className="w-full py-2 px-4 rounded-xl font-bold transition-all bg-gradient-primary text-dark-text"
-            >
-              Close
-            </button>
+    <div
+      className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] aspect-square rounded-bento p-4 sm:p-5 md:p-6 border border-dark-border bg-dark-card flex flex-col relative overflow-hidden group hover:border-dark-primary transition-colors cursor-pointer"
+      onClick={handleRSVP}
+    >
+      {/* External link icon at top right */}
+      {event?.rsvpUrl && (
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-500/80 backdrop-blur-sm flex items-center justify-center border border-gray-400/50">
+            <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover:text-gray-100 transition-colors" />
           </div>
         </div>
       )}
-    </>
+
+      {/* Image filling the entire card */}
+      {event?.image && (
+        <div className="absolute inset-0 -m-2 sm:-m-4 md:-m-6">
+          <Image
+            src={event.image}
+            alt={event.title || "Event coming soon"}
+            fill
+            className="object-contain p-4 sm:p-5 md:p-6"
+          />
+        </div>
+      )}
+    </div>
   );
 }
 
