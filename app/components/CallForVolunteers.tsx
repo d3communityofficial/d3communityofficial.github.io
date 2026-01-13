@@ -1,24 +1,41 @@
+"use client";
+
+import { ExternalLink } from "lucide-react";
+import Image from "next/image";
+import callForVolunteersData from "../data/callForVolunteers";
+
 export default function CallForVolunteers() {
-    return (
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdByt9-Cb7vV2ceZnLMcbOSUBA4YfFKMp17QxJAesiddUYpdA/viewform" target="_blank">
-        <div className="w-full rounded-bento p-5 sm:p-6 md:p-8 border border-dark-border bento-card flex flex-col relative overflow-hidden group" style={{ background: 'var(--gradient-card)' }}>
-            <div className='relative z-20'>
+  const handleClick = () => {
+    if (callForVolunteersData.formUrl) {
+      window.open(callForVolunteersData.formUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
-                <p className='text-3xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight'>
-                    Volunteer at D3!! 
-                </p>
-                <p className='text-3xl md:text-2xl font-extrabold leading-tight mb-6 tracking-tight text-gradient'>
-                    D3 Community is looking for volunteers!!
-                </p>
-
-                <p className='text-lg text-dark-muted mb-8 max-w-md leading-relaxed'>
-                    Would you like to be a volunteer at our meetups?
-                    <br />
-                    Let us know with this form.
-                </p>
-
-            </div>
+  return (
+    <div
+      className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] aspect-square rounded-bento p-4 sm:p-5 md:p-6 border border-dark-border bg-dark-card flex flex-col relative overflow-hidden group hover:border-dark-primary transition-colors cursor-pointer"
+      onClick={handleClick}
+    >
+      {/* External link icon at top right */}
+      {callForVolunteersData.formUrl && (
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-500/80 backdrop-blur-sm flex items-center justify-center border border-gray-400/50">
+            <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover:text-gray-100 transition-colors" />
+          </div>
         </div>
-        </a>
-    );
+      )}
+
+      {/* Image filling the entire card */}
+      {callForVolunteersData.image && (
+        <div className="absolute inset-0 -m-2 sm:-m-4 md:-m-6">
+          <Image
+            src={callForVolunteersData.image}
+            alt={callForVolunteersData.title || "Call for Volunteers"}
+            fill
+            className="p-4 sm:p-5 md:p-6 object-cover"
+          />
+        </div>
+      )}
+    </div>
+  );
 }
